@@ -7,5 +7,12 @@
     "options": {
         "query_debounce": 0.1
     },
-    "preferences": []
+    "preferences": [
+        {
+            "id": "kw",
+            "type": "keyword",
+            "name": "Brotab",
+            "default_value": "brotab"
+        }
+    ]
 }
