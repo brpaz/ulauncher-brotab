@@ -2,7 +2,7 @@
 
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-yellowgreen.svg?style=for-the-badge)](https://ext.ulauncher.io/)
 [![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-brotab/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz/ulauncher-brotab)
-[![license](https://img.shields.io/github/license/brpaz/ulauncher-brotab.svg?style=for-the-badge)](https://github.com/brpaz/:ulauncher-brotab/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/brpaz/ulauncher-brotab.svg?style=for-the-badge)](LICENSE)
 
 > Control your browser tabs directly from Ulauncher with [Brotab](https://github.com/balta2ar/brotab).
 
