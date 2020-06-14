@@ -7,5 +7,13 @@
     "options": {
         "query_debounce": 0.1
     },
-    "preferences": []
+    "preferences": [
+        {
+            "id": "ext_kw",
+            "type": "keyword",
+            "name": "Brotab",
+            "description": "Control your browser's tabs",
+            "default_value": "brotab"
+        }
+    ]
 }
