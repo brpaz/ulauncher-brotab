@@ -28,5 +28,6 @@ class ItemEnterEventListener(EventListener):
 
         if data["action"] == REFRESH_TABS:
             extension.brotab_client.index()
+            kw = extension.preferences["kw"]
             extension.notify("Index Finished")
-            return SetUserQueryAction("brotab ")
+            return SetUserQueryAction("%s " % kw)

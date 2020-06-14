@@ -9,10 +9,10 @@
     },
     "preferences": [
         {
-            "id": "ext_kw",
+            "id": "kw",
             "type": "keyword",
             "name": "Brotab",
-            "description": "Control your browser's tabs",
+            "description": "Control your browsers tabs",
             "default_value": "brotab"
         }
     ]
