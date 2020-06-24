@@ -34,7 +34,7 @@ class BrotabClient:
         """ Index the clients connected """
         self.clients = {}
 
-        result = subprocess.run(['brotab', 'clients'], capture_output=True, check=True)
+        result = subprocess.run(['brotab', 'clients'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
 
         output_text = result.stdout.decode("utf-8")
         for line in output_text.splitlines():
@@ -46,7 +46,7 @@ class BrotabClient:
 
         self.tabs = []
 
-        result = subprocess.run(['brotab', 'list'], capture_output=True, check=True)
+        result = subprocess.run(['brotab', 'list'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
 
         output_text = result.stdout.decode("utf-8")
         if not output_text.strip():
