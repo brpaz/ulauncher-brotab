@@ -45,7 +45,6 @@ class BrotabExtension(Extension):
         """ Index brotab tabs """
         self.brotab_client = BrotabClient()
         self.brotab_client.index()
-        print("RELOADED")
         Timer(INDEX_REFRESH_TIME_SECONDS, self.index_tabs).start()
 
     def show_commands(self, arg):

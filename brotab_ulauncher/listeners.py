@@ -12,7 +12,6 @@ class KeywordQueryEventListener(EventListener):
 
         if argument.startswith(":"):
             return extension.show_commands(argument)
-        print("RENDER")
         return extension.search_tabs(event)
 
 
@@ -23,10 +22,7 @@ class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         """ Handles the event """
         data = event.get_data()
-        print("hola listen", data)
         if data["action"] == RESULT_ITEM_ENTER:
-            print(data["action"])
-            print(data["tab"])
             extension.brotab_client.activate_tab(data["tab"])
 
         if data["action"] == REFRESH_TABS:
