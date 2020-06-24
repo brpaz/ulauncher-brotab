@@ -1,17 +1,18 @@
 from ulauncher.api.client.EventListener import EventListener
-from brotab.actions import RESULT_ITEM_ENTER, REFRESH_TABS
+from brotab_ulauncher.actions import RESULT_ITEM_ENTER, REFRESH_TABS
 from ulauncher.api.shared.action.SetUserQueryAction import SetUserQueryAction
 
 
 class KeywordQueryEventListener(EventListener):
     """ Listener that handles the user input """
+
     def on_event(self, event, extension):
         """ Handles the event """
         argument = event.get_argument() or ""
 
         if argument.startswith(":"):
             return extension.show_commands(argument)
-
+        print("RENDER")
         return extension.search_tabs(event)
 
 
@@ -22,8 +23,10 @@ class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         """ Handles the event """
         data = event.get_data()
-
+        print("hola listen", data)
         if data["action"] == RESULT_ITEM_ENTER:
+            print(data["action"])
+            print(data["tab"])
             extension.brotab_client.activate_tab(data["tab"])
 
         if data["action"] == REFRESH_TABS:
