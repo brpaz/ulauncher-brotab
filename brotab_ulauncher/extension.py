@@ -31,7 +31,7 @@ class BrotabExtension(Extension):
         Notify.init(__name__)
 
         self.brotab_client = BrotabClient()
-
+        self.mode = "activator"
         if not self.brotab_client.is_installed():
             raise EnvironmentError("Brotab is not installed on your system. \
                     Please see https://github.com/balta2ar/brotab for instructions.")
@@ -77,7 +77,7 @@ class BrotabExtension(Extension):
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
         for tab in tabs[:DISPLAY_MAX_RESULTS]:
-            data = {"action": RESULT_ITEM_ENTER, 'tab': tab['prefix']}
+            data = {"action": RESULT_ITEM_ENTER, 'tab': tab['prefix'], 'mode': self.mode}
 
             items.append(
                 ExtensionSmallResultItem(icon='images/%s' % tab["icon"],

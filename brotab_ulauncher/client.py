@@ -1,6 +1,6 @@
 import subprocess
 import logging
-from brotab_ulauncher.brotab import return_clients, return_tabs, activate_tab
+from brotab_ulauncher.brotab import return_clients, return_tabs, activate_tab, close_tab
 from asyncio import new_event_loop, set_event_loop
 logger = logging.getLogger(__name__)
 
@@ -71,6 +71,10 @@ class BrotabClient:
     def activate_tab(self, prefix):
         """ Activates the tab with the specified prefix """
         activate_tab(prefix)
+
+    def close_tab(self, prefix):
+        """ Closes the tab with the specified prefix """
+        close_tab(prefix)
 
     def get_browser_icon_from_prefix(self, prefix):
         """ Returns the name of the icon to display as client """
