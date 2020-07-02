@@ -10,9 +10,11 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
-from brotab.client import BrotabClient
-from brotab.listeners import KeywordQueryEventListener, ItemEnterEventListener
-from brotab.actions import RESULT_ITEM_ENTER, REFRESH_TABS
+from brotab_ulauncher.client import BrotabClient
+from brotab_ulauncher.listeners import KeywordQueryEventListener, ItemEnterEventListener
+from brotab_ulauncher.actions import RESULT_ITEM_ENTER, REFRESH_TABS
+import gi
+gi.require_version('Notify', '0.7')
 from gi.repository import Notify
 
 DISPLAY_MAX_RESULTS = 20
@@ -26,11 +28,10 @@ class BrotabExtension(Extension):
         super(BrotabExtension, self).__init__()
 
         self.logger.info("Initializing Brotab Extension")
-
         Notify.init(__name__)
 
         self.brotab_client = BrotabClient()
-
+        self.mode = "activator"
         if not self.brotab_client.is_installed():
             raise EnvironmentError("Brotab is not installed on your system. \
                     Please see https://github.com/balta2ar/brotab for instructions.")
@@ -42,8 +43,8 @@ class BrotabExtension(Extension):
 
     def index_tabs(self):
         """ Index brotab tabs """
+        self.brotab_client = BrotabClient()
         self.brotab_client.index()
-
         Timer(INDEX_REFRESH_TIME_SECONDS, self.index_tabs).start()
 
     def show_commands(self, arg):
@@ -76,7 +77,7 @@ class BrotabExtension(Extension):
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
         for tab in tabs[:DISPLAY_MAX_RESULTS]:
-            data = {"action": RESULT_ITEM_ENTER, 'tab': tab['prefix']}
+            data = {"action": RESULT_ITEM_ENTER, 'tab': tab['prefix'], 'mode': self.mode}
 
             items.append(
                 ExtensionSmallResultItem(icon='images/%s' % tab["icon"],

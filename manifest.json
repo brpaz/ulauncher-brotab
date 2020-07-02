@@ -14,6 +14,13 @@
             "name": "Brotab",
             "description": "Control your browsers tabs",
             "default_value": "brotab"
+        },
+        {
+            "id": "kw_cl",
+            "type": "keyword",
+            "name": "Closetab",
+            "description": "Close an active tab WARNING: Only is ready to accept cltab, cl or clt keywords",
+            "default_value": "cltab"
         }
     ]
 }
