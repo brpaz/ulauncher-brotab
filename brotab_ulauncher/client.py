@@ -2,6 +2,7 @@ import subprocess
 import logging
 from brotab_ulauncher.brotab import return_clients, return_tabs, activate_tab, close_tab
 from asyncio import new_event_loop, set_event_loop
+from memoization import cached
 logger = logging.getLogger(__name__)
 
 
@@ -10,12 +11,11 @@ class BrotabClient:
 
     clients = {}
 
-    tabs = []
-
     def __init__(self):
         """ Constructor method """
         pass
 
+    @cached(ttl=15)
     def is_installed(self):
         """ Checks if Brotab is installed """
         result = subprocess.run(['which', 'brotab'])
@@ -25,44 +25,44 @@ class BrotabClient:
 
         return False
 
-    def index(self):
-        """ Index Clients and Tabs data """
-        logger.info("Indexing tabs data")
-        self.index_clients()
-        self.index_tabs()
-
     def index_clients(self):
         """ Index the clients connected """
         self.clients = {}
         clients = return_clients()
         for client in clients:
-            self.clients[client.__dict__["_prefix"].replace(".", "")] = client.__dict__[
-                "_browser"]
+            self.clients[client.__dict__["_prefix"].replace(".", "")] = client.__dict__["_browser"]
 
-    def index_tabs(self):
+    @cached(ttl=5)
+    def fetch_tabs(self):
         """ Index Tabs list """
-        self.tabs = []
+        logger.info("Fetching tabs")
+        self.index_clients()
+
         loop = new_event_loop()
         set_event_loop(loop)
         tabs_listed = return_tabs()
 
+        tabs = []
         for tab in tabs_listed:
             tab = tab.split("\t")
-            self.tabs.append({
+            tabs.append({
                 "prefix": tab[0],
                 "name": tab[1],
                 "url": tab[2],
                 "icon": self.get_browser_icon_from_prefix(tab[0][:1])
             })
 
+        return tabs
+
     def search_tabs(self, filter_term=None):
         """ Returns a list of tabs, optionally filtered by the filter_query parameter """
 
+        allTabs = self.fetch_tabs()
         if not filter_term:
-            return self.tabs
+            return allTabs
 
         tabs = []
-        for tab in self.tabs:
+        for tab in allTabs:
             if filter_term.lower() in tab["name"].lower() or filter_term.lower() in tab["url"].lower():
                 tabs.append(tab)
 

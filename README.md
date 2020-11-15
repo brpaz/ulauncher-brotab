@@ -17,6 +17,17 @@
 
 Before installing this extension make sure you have [Brotab](https://github.com/balta2ar/brotab) installed and working as specified on their README. Otherwise this extension won´t work.
 
+You also need to have some Python packages installed on your system.
+
+You can do so, by running the following command:
+
+```sh
+pip install --user memoization==0.3.1
+```
+
+In some systems, you might need to run `pip3` instead of `pip`.
+
+
 ## Install
 
 Open ulauncher preferences window -> extensions -> add extension and paste the following url:
@@ -29,7 +40,8 @@ https://github.com/brpaz/ulauncher-brotab
 
 Use the keyword **brotab** to list your tabs. Clicking on an item will switch the browser to the specified active tab)
 
-The tabs are cached for 1m. You can force a refresh by typing `brotab :` and select the "Refresh tabs" option from the list.
+You can also close existing tabs by using `cl`, `cltab` or `cttab` keywords instead of `brotab`
+
 
 ## Development
 
@@ -42,14 +54,51 @@ The `make link` command will symlink the cloned repo into the appropriate locati
 
 To see your changes, stop ulauncher and run it from the command line with: `make dev`.
 
+The output will display something like this:
+
+```
+2020-11-15 10:24:16,869 | WARNING | ulauncher.api.server.ExtensionRunner: _run_process() | VERBOSE=1 ULAUNCHER_WS_API=ws://127.0.0.1:5054/ulauncher-brotab PYTHONPATH=/usr/lib/python3.8/site-packages /usr/bin/python3 /home/bruno/.local/share/ulauncher/extensions/ulauncher-brotab/main.py
+```
+
+Open another terminal window and execute the command displayed, "starting at VERBOSE=1". This will activate the extension. 
+
+To see your changes, CTRL+C the previous command and run it again to refresh.
+
 ## Contributing
 
-All contributions are welcome. Just open an issue and/or create a PR.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you like my work, feel free to "Buy me a Coffee"
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 💛 Support the project
+
+If this project was useful to you in some form, I would be glad to have your support.  It will help to keep the project alive and to have more time to work on Open Source.
+
+The sinplest form of support is to give a ⭐️ to this repo.
+
+You can also contribute with [GitHub Sponsors](https://github.com/sponsors/brpaz).
+
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Sponsor%20Me-red?style=for-the-badge)](https://github.com/sponsors/brpaz)
+
+
+Or if you prefer a one time donation to the project, you can simple:
 
 <a href="https://www.buymeacoffee.com/Z1Bu6asGV" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-## License
+## Author
 
-MIT &copy; Bruno Paz
+👤 **Bruno Paz**
+
+* Website: [brunopaz.dev](https://brunopaz.dev)
+* Github: [@brpaz](https://github.com/brpaz)
+* Twitter: [@brunopaz88](https://twitter.com/brunopaz88)
+
+## 📝 License
+
+Copyright © 2020 [Bruno Paz](https://github.com/brpaz).
+
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
