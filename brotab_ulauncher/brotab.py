@@ -7,13 +7,9 @@ from brotab.inout import is_port_accepting_connections
 from brotab.inout import get_mediator_ports
 from brotab.inout import in_temp_dir
 from brotab.api import SingleMediatorAPI, MultipleMediatorsAPI
-import re
 
 FORMAT = '%(asctime)-15s %(levelname)-10s %(message)s'
-logging.basicConfig(
-    format=FORMAT,
-    filename=in_temp_dir('brotab.log'),
-    level=logging.DEBUG)
+logging.basicConfig(format=FORMAT, filename=in_temp_dir('brotab.log'), level=logging.DEBUG)
 logger = logging.getLogger('brotab')
 logger.info('Logger has been created')
 
@@ -38,9 +34,10 @@ def create_clients(target_hosts=None) -> List[SingleMediatorAPI]:
     else:
         hosts, ports = parse_target_hosts(target_hosts)
 
-    result = [SingleMediatorAPI(prefix, host=host, port=port)
-              for prefix, host, port in zip(ascii_lowercase, hosts, ports)
-              if is_port_accepting_connections(port, host)]
+    result = [
+        SingleMediatorAPI(prefix, host=host, port=port) for prefix, host, port in zip(ascii_lowercase, hosts, ports)
+        if is_port_accepting_connections(port, host)
+    ]
     logger.info('Created clients: %s', result)
     return result
 
@@ -56,11 +53,13 @@ def activate_tab(prefix):
     api = MultipleMediatorsAPI(create_clients())
     api.activate_tab([prefix], True)
 
+
 def close_tab(prefix):
     # Try stdin if arguments are empty
     logger.info('Closing tabs: %s', prefix)
     api = MultipleMediatorsAPI(create_clients())
-    tabs = api.close_tabs([prefix])
+    api.close_tabs([prefix])
+
 
 def return_clients():
     logger.info('Showing clients')
