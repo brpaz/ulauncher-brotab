@@ -64,6 +64,12 @@ Open another terminal window and execute the command displayed, "starting at VER
 
 To see your changes, CTRL+C the previous command and run it again to refresh.
 
+## FAQ
+
+### My extension doesnt install: Key Error
+
+This error usually indicates a missing Python package in your system. Please [read](https://ulauncher-extension-doesnt-install-and-now.netlify.app/).
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
