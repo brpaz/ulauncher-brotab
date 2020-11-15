@@ -1,6 +1,7 @@
 import subprocess
 import logging
-
+from brotab_ulauncher.brotab import return_clients, return_tabs, activate_tab, close_tab
+from asyncio import new_event_loop, set_event_loop
 logger = logging.getLogger(__name__)
 
 
@@ -33,27 +34,20 @@ class BrotabClient:
     def index_clients(self):
         """ Index the clients connected """
         self.clients = {}
-
-        result = subprocess.run(['brotab', 'clients'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-
-        output_text = result.stdout.decode("utf-8")
-        for line in output_text.splitlines():
-            client_info = line.rstrip().split("\t")
-            self.clients[client_info[0][:1]] = client_info[3]
+        clients = return_clients()
+        for client in clients:
+            self.clients[client.__dict__["_prefix"].replace(".", "")] = client.__dict__[
+                "_browser"]
 
     def index_tabs(self):
         """ Index Tabs list """
-
         self.tabs = []
+        loop = new_event_loop()
+        set_event_loop(loop)
+        tabs_listed = return_tabs()
 
-        result = subprocess.run(['brotab', 'list'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-
-        output_text = result.stdout.decode("utf-8")
-        if not output_text.strip():
-            return
-
-        for line in output_text.splitlines():
-            tab = line.rstrip().split("\t")
+        for tab in tabs_listed:
+            tab = tab.split("\t")
             self.tabs.append({
                 "prefix": tab[0],
                 "name": tab[1],
@@ -76,7 +70,11 @@ class BrotabClient:
 
     def activate_tab(self, prefix):
         """ Activates the tab with the specified prefix """
-        subprocess.run(['brotab', 'activate', prefix, '--focused'])
+        activate_tab(prefix)
+
+    def close_tab(self, prefix):
+        """ Closes the tab with the specified prefix """
+        close_tab(prefix)
 
     def get_browser_icon_from_prefix(self, prefix):
         """ Returns the name of the icon to display as client """
