@@ -9,7 +9,7 @@ setup: ## Setups the project
 	pre-commit install
 
 lint: ## Run Lint
-	@flake8
+	@flake8  --ignore=E402,F401
 
 format: ## Format code using yapf
 	@yapf --in-place --recursive .
