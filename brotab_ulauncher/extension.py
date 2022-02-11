@@ -72,7 +72,7 @@ class BrotabExtension(Extension):
                     ExtensionResultItem(
                         icon="images/%s" % tab["icon"],
                         name=tab["name"],
-                        description=tab["url"] + "potato",
+                        description=tab["url"],
                         on_enter=ExtensionCustomAction(data),
                         on_alt_enter=CopyToClipboardAction(tab["url"]),
                     ))
@@ -81,7 +81,7 @@ class BrotabExtension(Extension):
                     ExtensionSmallResultItem(
                         icon="images/%s" % tab["icon"],
                         name=tab["name"],
-                        description=tab["url"] + "potato",
+                        description=tab["url"],
                         on_enter=ExtensionCustomAction(data),
                         on_alt_enter=CopyToClipboardAction(tab["url"]),
                     ))
