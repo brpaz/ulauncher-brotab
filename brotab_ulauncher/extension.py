@@ -19,7 +19,7 @@ from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 from brotab_ulauncher.client import BrotabClient
 from brotab_ulauncher.listeners import KeywordQueryEventListener, ItemEnterEventListener
 
-DISPLAY_MAX_RESULTS = 20
+DISPLAY_MAX_RESULTS = 10
 
 
 class BrotabExtension(Extension):
@@ -47,7 +47,7 @@ class BrotabExtension(Extension):
             )
         ])
 
-    def search_tabs(self, event):
+    def search_tabs(self, event, extension):
         """ Search tabs """
 
         if not self.brotab_client.is_installed():
@@ -67,14 +67,24 @@ class BrotabExtension(Extension):
         for tab in tabs[:DISPLAY_MAX_RESULTS]:
             data = {"tab": tab["prefix"], "mode": self.mode}
 
-            items.append(
-                ExtensionSmallResultItem(
-                    icon="images/%s" % tab["icon"],
-                    name=tab["name"],
-                    description=tab["url"],
-                    on_enter=ExtensionCustomAction(data),
-                    on_alt_enter=CopyToClipboardAction(tab["url"]),
-                ))
+            if extension.preferences["show_url"] == "Yes":
+                items.append(
+                    ExtensionResultItem(
+                        icon="images/%s" % tab["icon"],
+                        name=tab["name"],
+                        description=tab["url"] + "potato",
+                        on_enter=ExtensionCustomAction(data),
+                        on_alt_enter=CopyToClipboardAction(tab["url"]),
+                    ))
+            else:
+                items.append(
+                    ExtensionSmallResultItem(
+                        icon="images/%s" % tab["icon"],
+                        name=tab["name"],
+                        description=tab["url"] + "potato",
+                        on_enter=ExtensionCustomAction(data),
+                        on_alt_enter=CopyToClipboardAction(tab["url"]),
+                    ))
 
         if not items:
             return self.show_no_results_message()

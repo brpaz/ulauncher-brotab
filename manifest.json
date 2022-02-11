@@ -21,6 +21,14 @@
             "name": "Closetab",
             "description": "Close an active tab WARNING: Only is ready to accept cltab, cl or clt keywords",
             "default_value": "cltab"
+        },
+        {
+            "id": "show_url",
+            "type": "select",
+            "name": "Closetab",
+            "description": "Show URL in search results",
+            "default_value": "No",
+            "options":["Yes","No"]
         }
     ]
 }
