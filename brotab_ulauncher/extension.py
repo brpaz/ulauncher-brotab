@@ -63,7 +63,6 @@ class BrotabExtension(Extension):
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
         max_results = int(extension.preferences["max_results"])
-        self.logger.info("maxres:%s" % max_results)
 
         for tab in tabs[:max_results]:
             data = {"tab": tab["prefix"], "mode": self.mode}
