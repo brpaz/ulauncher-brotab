@@ -15,7 +15,7 @@ class KeywordQueryEventListener(EventListener):
         else:
             extension.mode = "activator"
 
-        return extension.search_tabs(event, extension)
+        return extension.search_tabs(event)
 
 
 class ItemEnterEventListener(EventListener):

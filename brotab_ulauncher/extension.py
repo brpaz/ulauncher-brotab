@@ -45,7 +45,7 @@ class BrotabExtension(Extension):
             )
         ])
 
-    def search_tabs(self, event, extension):
+    def search_tabs(self, event):
         """ Search tabs """
 
         if not self.brotab_client.is_installed():
@@ -62,7 +62,7 @@ class BrotabExtension(Extension):
         items = []
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
-        max_results = int(extension.preferences["max_results"])
+        max_results = int(self.preferences["max_results"])
 
         for tab in tabs[:max_results]:
             data = {"tab": tab["prefix"], "mode": self.mode}
