@@ -67,7 +67,7 @@ class BrotabExtension(Extension):
         for tab in tabs[:max_results]:
             data = {"tab": tab["prefix"], "mode": self.mode}
 
-            if extension.preferences["show_url"] == "Yes":
+            if self.preferences["show_url"] == "Yes":
                 items.append(
                     ExtensionResultItem(
                         icon="images/%s" % tab["icon"],
