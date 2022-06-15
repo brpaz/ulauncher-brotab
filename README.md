@@ -24,7 +24,7 @@ You also need to have some Python packages installed on your system.
 You can do so, by running the following command:
 
 ```sh
-pip install --user memoization==0.4.0
+pip install --user memoization==0.4.0 brotab==1.4.2
 ```
 
 In some systems, you might need to run `pip3` instead of `pip`.
