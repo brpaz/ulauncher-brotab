@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/brpaz/ulauncher-brotab/compare/v1.0.0...v1.0.1) (2022-06-15)
+
+
+### Bug Fixes
+
+* **brotab:** brotab.files.in_temp_dir for btotab 1.4.2 ([#15](https://github.com/brpaz/ulauncher-brotab/issues/15)) ([d3219d9](https://github.com/brpaz/ulauncher-brotab/commit/d3219d90781ebd37540712bbda9b8ebee3f8cd27))
+
 # 1.0.0 (2022-06-15)
 
 
