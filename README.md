@@ -1,10 +1,12 @@
 # Brotab Ulauncher Extension
 
+> Control your browser tabs directly from Ulauncher with [Brotab](https://github.com/balta2ar/brotab).
+
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-yellowgreen.svg?style=for-the-badge)](https://ext.ulauncher.io/)
 [![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-brotab/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz/ulauncher-brotab)
 [![license](https://img.shields.io/github/license/brpaz/ulauncher-brotab.svg?style=for-the-badge)](LICENSE)
 
-> Control your browser tabs directly from Ulauncher with [Brotab](https://github.com/balta2ar/brotab).
+
 
 ## Demo
 
@@ -22,11 +24,10 @@ You also need to have some Python packages installed on your system.
 You can do so, by running the following command:
 
 ```sh
-pip install --user memoization==0.3.1
+pip install --user memoization==0.4.0
 ```
 
 In some systems, you might need to run `pip3` instead of `pip`.
-
 
 ## Install
 
@@ -60,7 +61,7 @@ The output will display something like this:
 2020-11-15 10:24:16,869 | WARNING | ulauncher.api.server.ExtensionRunner: _run_process() | VERBOSE=1 ULAUNCHER_WS_API=ws://127.0.0.1:5054/ulauncher-brotab PYTHONPATH=/usr/lib/python3.8/site-packages /usr/bin/python3 /home/bruno/.local/share/ulauncher/extensions/ulauncher-brotab/main.py
 ```
 
-Open another terminal window and execute the command displayed, "starting at VERBOSE=1". This will activate the extension. 
+Open another terminal window and execute the command displayed, "starting at VERBOSE=1". This will activate the extension.
 
 To see your changes, CTRL+C the previous command and run it again to refresh.
 
@@ -108,3 +109,5 @@ Or if you prefer a one time donation to the project, you can simple:
 Copyright © 2020 [Bruno Paz](https://github.com/brpaz).
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+<a href="https://www.flaticon.com/free-icons/tab" title="tab icons">Tab icons created by Freepik - Flaticon</a>

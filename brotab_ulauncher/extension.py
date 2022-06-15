@@ -2,11 +2,6 @@
 Extension Class
 """
 
-import gi
-
-gi.require_version("Gtk", "3.0")
-
-from gi.repository import Gtk
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
@@ -22,6 +17,7 @@ from brotab_ulauncher.listeners import KeywordQueryEventListener, ItemEnterEvent
 
 class BrotabExtension(Extension):
     """ Main Extension Class  """
+
     def __init__(self):
         """ Initializes the extension """
         super(BrotabExtension, self).__init__()
