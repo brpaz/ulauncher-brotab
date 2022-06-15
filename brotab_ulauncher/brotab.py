@@ -5,7 +5,7 @@ from typing import Tuple, List
 
 from brotab.inout import is_port_accepting_connections
 from brotab.inout import get_mediator_ports
-from brotab import in_temp_dir
+from brotab.files import in_temp_dir
 from brotab.api import SingleMediatorAPI, MultipleMediatorsAPI
 
 FORMAT = '%(asctime)-15s %(levelname)-10s %(message)s'
