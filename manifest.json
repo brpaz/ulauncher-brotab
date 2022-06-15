@@ -21,6 +21,21 @@
             "name": "Closetab",
             "description": "Close an active tab WARNING: Only is ready to accept cltab, cl or clt keywords",
             "default_value": "cltab"
+        },
+        {
+            "id": "show_url",
+            "type": "select",
+            "name": "Show URL",
+            "description": "Show URL in search results",
+            "default_value": "No",
+            "options":["Yes","No"]
+        },
+        {
+            "id": "max_results",
+            "type": "input",
+            "name": "Max Results",
+            "description": "Maximum number of search results to show.",
+            "default_value": 20
         }
     ]
 }

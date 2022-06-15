@@ -2,11 +2,6 @@
 Extension Class
 """
 
-import gi
-
-gi.require_version("Gtk", "3.0")
-
-from gi.repository import Gtk
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
@@ -19,11 +14,10 @@ from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 from brotab_ulauncher.client import BrotabClient
 from brotab_ulauncher.listeners import KeywordQueryEventListener, ItemEnterEventListener
 
-DISPLAY_MAX_RESULTS = 20
-
 
 class BrotabExtension(Extension):
     """ Main Extension Class  """
+
     def __init__(self):
         """ Initializes the extension """
         super(BrotabExtension, self).__init__()
@@ -64,17 +58,29 @@ class BrotabExtension(Extension):
         items = []
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
-        for tab in tabs[:DISPLAY_MAX_RESULTS]:
+        max_results = int(self.preferences["max_results"])
+
+        for tab in tabs[:max_results]:
             data = {"tab": tab["prefix"], "mode": self.mode}
 
-            items.append(
-                ExtensionSmallResultItem(
-                    icon="images/%s" % tab["icon"],
-                    name=tab["name"],
-                    description=tab["url"],
-                    on_enter=ExtensionCustomAction(data),
-                    on_alt_enter=CopyToClipboardAction(tab["url"]),
-                ))
+            if self.preferences["show_url"] == "Yes":
+                items.append(
+                    ExtensionResultItem(
+                        icon="images/%s" % tab["icon"],
+                        name=tab["name"],
+                        description=tab["url"],
+                        on_enter=ExtensionCustomAction(data),
+                        on_alt_enter=CopyToClipboardAction(tab["url"]),
+                    ))
+            else:
+                items.append(
+                    ExtensionSmallResultItem(
+                        icon="images/%s" % tab["icon"],
+                        name=tab["name"],
+                        description=tab["url"],
+                        on_enter=ExtensionCustomAction(data),
+                        on_alt_enter=CopyToClipboardAction(tab["url"]),
+                    ))
 
         if not items:
             return self.show_no_results_message()
