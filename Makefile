@@ -24,4 +24,4 @@ deps: ## Install Python Dependencies
 	@pip3 install -r requirements.txt
 
 dev: ## Runs ulauncher on development mode
-	ulauncher --no-extensions --dev -v |& grep "ulauncher-brotab"
+	ulauncher --no-extensions --dev -v |& grep "brotab"

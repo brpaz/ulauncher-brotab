@@ -5,11 +5,10 @@ from typing import Tuple, List
 
 from brotab.inout import is_port_accepting_connections
 from brotab.inout import get_mediator_ports
-from brotab.files import in_temp_dir
 from brotab.api import SingleMediatorAPI, MultipleMediatorsAPI
 
 FORMAT = '%(asctime)-15s %(levelname)-10s %(message)s'
-logging.basicConfig(format=FORMAT, filename=in_temp_dir('brotab.log'), level=logging.DEBUG)
+logging.basicConfig(format=FORMAT, filename='/tmp/brotab.log', level=logging.DEBUG)
 logger = logging.getLogger('brotab')
 logger.info('Logger has been created')
 
