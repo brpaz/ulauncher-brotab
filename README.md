@@ -2,20 +2,23 @@
 
 > Control your browser tabs directly from Ulauncher with [Brotab](https://github.com/balta2ar/brotab).
 
-[![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-yellowgreen.svg?style=for-the-badge)](https://ext.ulauncher.io/)
-[![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-brotab/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz/ulauncher-brotab)
-[![license](https://img.shields.io/github/license/brpaz/ulauncher-brotab.svg?style=for-the-badge)](LICENSE)
 
+[![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-yellowgreen.svg?style=for-the-badge)](https://ext.ulauncher.io/)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/brpaz/ulauncher-brotab/ci.yml?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz/ulauncher-brotab)
+[![license](https://img.shields.io/github/license/brpaz/ulauncher-brotab.svg?style=for-the-badge)](LICENSE)
 
 
 ## Demo
 
 ![Demo](demo.gif)
 
-## Requirements
+## Getting started
+
+### Pre Requisites
 
 * [Ulauncher](https://github.com/Ulauncher/Ulauncher) > 5.0
 * Python >= 3
+* [Brotab](https://github.com/balta2ar/brotab) ~= 1.4.2
 
 Before installing this extension make sure you have [Brotab](https://github.com/balta2ar/brotab) installed and working as specified on their README. Otherwise this extension won´t work.
 
@@ -29,7 +32,7 @@ pip install --user memoization==0.4.0 brotab==1.4.2
 
 In some systems, you might need to run `pip3` instead of `pip`.
 
-## Install
+## Installation
 
 Open ulauncher preferences window -> extensions -> add extension and paste the following url:
 
@@ -102,11 +105,10 @@ Or if you prefer a one time donation to the project, you can simple:
 
 * Website: [brunopaz.dev](https://brunopaz.dev)
 * Github: [@brpaz](https://github.com/brpaz)
-* Twitter: [@brunopaz88](https://twitter.com/brunopaz88)
 
 ## 📝 License
 
-Copyright © 2020 [Bruno Paz](https://github.com/brpaz).
+Copyright © 2023 [Bruno Paz](https://github.com/brpaz).
 
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
