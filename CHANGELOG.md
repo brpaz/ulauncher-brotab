@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/brpaz/ulauncher-brotab/compare/v1.0.1...v1.0.2) (2023-02-05)
+
+
+### Bug Fixes
+
+* removed use of function that was removed from brotab and not really needed ([d433382](https://github.com/brpaz/ulauncher-brotab/commit/d43338216cf8421c22e8cb8b1255c54dbd554e2f))
+
 ## [1.0.1](https://github.com/brpaz/ulauncher-brotab/compare/v1.0.0...v1.0.1) (2022-06-15)
 
 
